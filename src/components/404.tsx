@@ -1,7 +1,7 @@
 import React from 'react'
 import { useLocation, Redirect } from 'react-router-dom'
 
-function NotFound (props) {
+function NotFound<React> (props: any) {
   const location = useLocation()
 
   console.log(props)
