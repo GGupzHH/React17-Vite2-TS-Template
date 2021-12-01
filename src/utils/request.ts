@@ -1,15 +1,16 @@
-import axios from 'axios'
+import axios, { Axios, AxiosInstance, AxiosRequestConfig } from 'axios'
 import Cookie from 'js-cookie'
 
 import { camelizeKeys, decamelizeKeys } from './camelCase'
 import Router from '../router/index'
+import { IRequestData } from '@/@types'
 
 // redirect error
-function errorRedirect (url) {
+function errorRedirect (url: string) {
   Router.push(`/${url}`)
 }
 // code Message
-const codeMessage = {
+const codeMessage: { [key: number]: string} = {
   // 200: '服务器成功返回请求的数据。',
   200: 'The server successfully returned the requested data.',
   // 201: '新建或修改数据成功。',
@@ -47,7 +48,7 @@ const codeMessage = {
 }
 
 // 创建axios实例
-const service = axios.create({
+const service: AxiosInstance = axios.create({
   // api 的 base_url
   // baseURL: import.meta.env.VITE_BASE_API,
   baseURL: '/api',
@@ -56,9 +57,9 @@ const service = axios.create({
 })
 
 // request拦截器
-service.interceptors.request.use(
+service.interceptors.request.use<AxiosRequestConfig>(
   request => {
-    const token = Cookie.get('token')
+    const token: string | undefined = Cookie.get('token')
 
     // Conversion of hump nomenclature
     if (
@@ -76,7 +77,7 @@ service.interceptors.request.use(
     if (request.url === '/login') {
       return request
     }
-    request.headers.Authorization = token
+    request.headers!.Authorization = token as string
     return request
   },
   error => {
@@ -96,11 +97,11 @@ service.interceptors.response.use(
      *  }
      */
 
-    const data = response.data
-    const msg = data.msg || ''
+    const data: any = response.data
+    const msg: string = data.msg || ''
     if (msg.indexOf('user not log in') !== -1 && data.error === -1) {
       // TODO 写死的  之后要根据语言跳转
-      errorRedirect('en/login')
+      errorRedirect('login')
       return
     }
     Promise.resolve().then(() => {
@@ -113,13 +114,16 @@ service.interceptors.response.use(
     ) {
       return new Promise(resolve => {
         const reader = new FileReader()
+        reader.readAsText(<Blob>response.data)
+
         reader.onload = () => {
+          if (!reader.result || typeof reader.result !== 'string') return resolve(response.data)
+
           response.data = JSON.parse(reader.result)
           // resolve(camelizeKeys(response.data))
           resolve(response.data)
         }
 
-        reader.readAsText(response.data)
       })
     } else if (data instanceof Blob) {
       return {
@@ -172,7 +176,7 @@ export function sleep (time = 0) {
   })
 }
 
-function extractFileNameFromContentDispositionHeader (value) {
+function extractFileNameFromContentDispositionHeader (value: string) {
   const patterns = [
     /filename\*=[^']+'\w*'"([^"]+)";?/i,
     /filename\*=[^']+'\w*'([^;]+);?/i,
@@ -180,7 +184,7 @@ function extractFileNameFromContentDispositionHeader (value) {
     /filename=([^;]*);?/i
   ]
 
-  let responseFilename
+  let responseFilename: any
   patterns.some(regex => {
     responseFilename = regex.exec(value)
     return responseFilename !== null
@@ -197,7 +201,7 @@ function extractFileNameFromContentDispositionHeader (value) {
   return null
 }
 
-export function downloadFile (boldData, filename = 'shinewing', type) {
+export function downloadFile (boldData: BlobPart, filename = 'shinewing', type: any) {
   // TODO: https://blog.csdn.net/weixin_42142057/article/details/97655591
   const blob = boldData instanceof Blob
     ? boldData
@@ -215,10 +219,10 @@ export function downloadFile (boldData, filename = 'shinewing', type) {
   document.body.removeChild(link)
 }
 
-export function useResHeadersAPI (headers, resData) {
+export function useResHeadersAPI (headers: any, resData: any) {
   const disposition = headers['content-disposition']
   if (disposition) {
-    let filename = ''
+    let filename: string | null = ''
     /**
      * TODO: See
      * https://stackoverflow.com/a/40940790/13202554
