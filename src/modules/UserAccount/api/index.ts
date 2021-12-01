@@ -1,4 +1,4 @@
-import request from '@/utils/request'
+// import request from '@/utils/request'
 // import request from 'utils/request'
 
 function sleep (time = 0) {
@@ -9,6 +9,6 @@ function sleep (time = 0) {
   })
 }
 
-export function login (params) {
+export function login (params: any) {
   return sleep(1000)
 }

@@ -14,13 +14,16 @@ import {
 
 import {
   asyncSetUserInfo
-} from '@/store/actions'
+} from '@/modules/UserAccount/store'
+
 import {
   useDispatch,
-  useSelector
+  useSelector,
 } from 'react-redux'
 
-function Login () {
+// import {  } from
+
+function Login<React> () {
   const userStore = useSelector(({user}) => {
     return user
   })
