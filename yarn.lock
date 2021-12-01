@@ -313,6 +313,11 @@
   dependencies:
     antd "*"
 
+"@types/history@*":
+  version "4.7.9"
+  resolved "https://registry.npmmirror.com/@types/history/download/@types/history-4.7.9.tgz#1cfb6d60ef3822c589f18e70f8b12f9a28ce8724"
+  integrity sha1-HPttYO84IsWJ8Y5w+LEvmijOhyQ=
+
 "@types/hoist-non-react-statics@^3.3.0":
   version "3.3.1"
   resolved "https://registry.npmmirror.com/@types/hoist-non-react-statics/download/@types/hoist-non-react-statics-3.3.1.tgz?cache=0&sync_timestamp=1637265727153&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2F%40types%2Fhoist-non-react-statics%2Fdownload%2F%40types%2Fhoist-non-react-statics-3.3.1.tgz#1124aafe5118cb591977aeb1ceaaed1070eb039f"
@@ -326,14 +331,26 @@
   resolved "https://registry.npmmirror.com/@types/node/download/@types/node-16.11.10.tgz#2e3ad0a680d96367103d3e670d41c2fed3da61ae"
   integrity sha512-3aRnHa1KlOEEhJ6+CvyHKK5vE9BcLGjtUpwvqYLRvYNQKMfabu3BwfJaA/SLW8dxe28LsNDjtHwePTuzn3gmOA==
 
+"@types/node@^16.11.11":
+  version "16.11.11"
+  resolved "https://registry.npmmirror.com/@types/node/download/@types/node-16.11.11.tgz#6ea7342dfb379ea1210835bada87b3c512120234"
+  integrity sha512-KB0sixD67CeecHC33MYn+eYARkqTheIRNuu97y2XMjR7Wu3XibO1vaY6VBV6O/a89SPI81cEUIYT87UqUWlZNw==
+
 "@types/prop-types@*":
   version "15.7.4"
   resolved "https://registry.npmmirror.com/@types/prop-types/download/@types/prop-types-15.7.4.tgz#fcf7205c25dff795ee79af1e30da2c9790808f11"
   integrity sha1-/PcgXCXf95Xuea8eMNosl5CAjxE=
 
-"@types/react-dom@^17.0.0":
+"@types/react-document-title@^2.0.5":
+  version "2.0.5"
+  resolved "https://registry.nlark.com/@types/react-document-title/download/@types/react-document-title-2.0.5.tgz?cache=0&sync_timestamp=1629709023274&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40types%2Freact-document-title%2Fdownload%2F%40types%2Freact-document-title-2.0.5.tgz#5093e25420c918066bb94efff1cb08a894289cce"
+  integrity sha1-UJPiVCDJGAZruU7/8csIqJQonM4=
+  dependencies:
+    "@types/react" "*"
+
+"@types/react-dom@^17.0.11":
   version "17.0.11"
-  resolved "https://registry.npmmirror.com/@types/react-dom/download/@types/react-dom-17.0.11.tgz?cache=0&sync_timestamp=1637270206594&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2F%40types%2Freact-dom%2Fdownload%2F%40types%2Freact-dom-17.0.11.tgz#e1eadc3c5e86bdb5f7684e00274ae228e7bcc466"
+  resolved "https://registry.npmmirror.com/@types/react-dom/download/@types/react-dom-17.0.11.tgz#e1eadc3c5e86bdb5f7684e00274ae228e7bcc466"
   integrity sha1-4ercPF6GvbX3aE4AJ0riKOe8xGY=
   dependencies:
     "@types/react" "*"
@@ -348,7 +365,24 @@
     hoist-non-react-statics "^3.3.0"
     redux "^4.0.0"
 
-"@types/react@*", "@types/react@^17.0.0":
+"@types/react-router-dom@^5.3.2":
+  version "5.3.2"
+  resolved "https://registry.npmmirror.com/@types/react-router-dom/download/@types/react-router-dom-5.3.2.tgz#ebd8e145cf056db5c66eb1dac63c72f52e8542ee"
+  integrity sha1-69jhRc8FbbXGbrHaxjxy9S6FQu4=
+  dependencies:
+    "@types/history" "*"
+    "@types/react" "*"
+    "@types/react-router" "*"
+
+"@types/react-router@*":
+  version "5.1.17"
+  resolved "https://registry.npmmirror.com/@types/react-router/download/@types/react-router-5.1.17.tgz#087091006213b11042f39570e5cd414863693968"
+  integrity sha1-CHCRAGITsRBC85Vw5c1BSGNpOWg=
+  dependencies:
+    "@types/history" "*"
+    "@types/react" "*"
+
+"@types/react@*", "@types/react@^17.0.37":
   version "17.0.37"
   resolved "https://registry.npmmirror.com/@types/react/download/@types/react-17.0.37.tgz#6884d0aa402605935c397ae689deed115caad959"
   integrity sha512-2FS1oTqBGcH/s0E+CjrCCR9+JMpsu9b69RTFO+40ua43ZqP5MmQ4iUde/dMjWR909KxZwmOQIFq6AV6NjEG5xg==
@@ -1362,7 +1396,7 @@ toggle-selection@^1.0.6:
   resolved "https://registry.nlark.com/toggle-selection/download/toggle-selection-1.0.6.tgz#6e45b1263f2017fa0acc7d89d78b15b8bf77da32"
   integrity sha1-bkWxJj8gF/oKzH2J14sVuL932jI=
 
-typescript@^4.3.2:
+typescript@^4.5.2:
   version "4.5.2"
   resolved "https://registry.npmmirror.com/typescript/download/typescript-4.5.2.tgz#8ac1fba9f52256fdb06fb89e4122fa6a346c2998"
   integrity sha512-5BlMof9H1yGt0P8/WF+wPNw6GfctgGjXp5hkblpyT+8rkASSmkUKMXrxR0Xg8ThVCi/JnHQiKXeBaEwCeQwMFw==

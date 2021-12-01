@@ -6,6 +6,11 @@ import '@/modules/UserAccount/style/login.scss'
 
 import Logo from '@/assets/logo.svg'
 import ViteLogo from '@/assets/favicon.svg'
+import { FormProps } from 'rc-field-form'
+
+// import { ValidateErrorEntity } from 'rc-fidle-form'
+
+// import { FormProps } from 'rc-pagination'
 
 import {
   SmileTwoTone,
@@ -22,7 +27,6 @@ import {
 } from 'react-redux'
 
 // import {  } from
-
 function Login<React> () {
   const userStore = useSelector(({user}) => {
     return user
@@ -37,7 +41,7 @@ function Login<React> () {
     console.log('Success:', userStore)
   }
 
-  const onFinishFailed = (errorInfo) => {
+  const onFinishFailed = (errorInfo: any) => {
     console.log('Failed:', errorInfo)
   }
 
