@@ -1,8 +1,5 @@
-import {
-  demoHome
-} from '@/modules/HomeDemo/api'
-
 import { sleep } from '@/utils/request'
+import { Dispatch } from 'redux'
 
 import ACTIONS from './ACTIONS_TYPE'
 
@@ -21,22 +18,24 @@ const initialState = {
   }
 }
 
+export type IHomeDemoState = typeof initialState
+
+type IActionsParams = Partial<IHomeDemoState>
+
 export const actions = {
-  asyncSetHomeInfor (info) {
+  asyncSetHomeInfor (info: IActionsParams) {
     return {
       type: ACTIONS.HOME_INFO,
       info
     }
   },
-  setHomeInfo (homeInfo) {
+  setHomeInfo (homeInfo: IActionsParams) {
     console.log('homeInfo')
     // 异步更新数据需要返回函数  函数的返回结果会返回给模板
-    return async (dispatch, getState) => {
+    return async (dispatch: Dispatch) => {
       await sleep(1000)
-      // 这里可以获取所有的state
-      const state = getState()
       // 数据更新继续使用dispatch
-      dispatch(this.asyncSetHomeInfor('async type'))
+      dispatch(this.asyncSetHomeInfor({}))
       return {
         error: 0,
         data: {},
@@ -46,7 +45,7 @@ export const actions = {
   }
 }
 
-export default function reducers (state = initialState, actions) {
+export default function reducers (state = initialState, actions: any): IHomeDemoState {
   switch (actions.type) {
     case ACTIONS.HOME_INFO:
       console.log('HOMEINFO reduces', ACTIONS.HOME_INFO)

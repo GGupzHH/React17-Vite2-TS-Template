@@ -19,8 +19,12 @@ const initialState = {
   }
 }
 
+export type ITestDemoState = typeof initialState
+
+type IActionsParams = Partial<ITestDemoState>
+
 export const actions = {
-  setUser (userInfo) {
+  setUser (userInfo: IActionsParams) {   
     console.log('setUser')
 
     return {
@@ -30,7 +34,7 @@ export const actions = {
   }
 }
 
-export default function reducers (state = initialState, actions) {
+export default function reducers (state = initialState, actions: any): ITestDemoState {
   switch (actions.type) {
     case ACTIONS.DEMO_INFO:
         console.log('LOGIN reduces')
