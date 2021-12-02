@@ -6,7 +6,6 @@ import '@/modules/UserAccount/style/login.scss'
 
 import Logo from '@/assets/logo.svg'
 import ViteLogo from '@/assets/favicon.svg'
-import { FormProps } from 'rc-field-form'
 
 // import { ValidateErrorEntity } from 'rc-fidle-form'
 
@@ -17,28 +16,28 @@ import {
   LockOutlined
 } from '@ant-design/icons'
 
-import {
-  asyncSetUserInfo
-} from '@/modules/UserAccount/store'
+import { actions } from '@/modules/UserAccount/store'
 
 import {
   useDispatch,
   useSelector,
 } from 'react-redux'
 
+import { IReducersModules } from '@/store/reducers'
+
 // import {  } from
 function Login<React> () {
-  const userStore = useSelector(({user}) => {
-    return user
+  const userStore = useSelector<IReducersModules>((reducersModules) => {
+    return reducersModules.user
   })
-
   const dispatch = useDispatch()
 
-  const onFinish = async (values) => {
+  const onFinish = async (values: any) => {
     console.log('Success:', values)
-    const res = await dispatch(asyncSetUserInfo())
+    const res = await dispatch(actions.asyncSetUserInfo({}))
     console.log('Success:', res)
     console.log('Success:', userStore)
+    
   }
 
   const onFinishFailed = (errorInfo: any) => {

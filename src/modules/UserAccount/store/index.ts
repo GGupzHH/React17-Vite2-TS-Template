@@ -13,16 +13,18 @@ const initialState = {
   }
 }
 
-export type userAccountState = typeof initialState
+export type IUserAccountState = typeof initialState
+
+type IActionsParams = Partial<IUserAccountState>
 
 export const actions = {
-  setUserInfo (info) {
+  setUserInfo (info: IActionsParams) {
     return {
       type: ACTIONS.USERINFO,
       info
     }
   },
-  asyncSetUserInfo (homeInfo) {
+  asyncSetUserInfo (homeInfo: IActionsParams) {
     console.log('homeInfo')
     // 异步更新数据需要返回函数  函数的返回结果会返回给模板
     return async (dispatch: Dispatch) => {
@@ -44,7 +46,7 @@ export const actions = {
   }
 }
 
-export default function reducers (state = initialState, actions: AnyAction) {
+export default function reducers (state = initialState, actions: AnyAction): IUserAccountState {
   switch (actions.type) {
     case ACTIONS.USERINFO:
       return {
