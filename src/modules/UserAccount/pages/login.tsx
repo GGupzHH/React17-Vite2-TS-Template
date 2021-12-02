@@ -24,10 +24,11 @@ import {
 } from 'react-redux'
 
 import { IReducersModules } from '@/store/reducers'
+import { IUserAccountState } from '@/modules/UserAccount/store'
 
 // import {  } from
 function Login<React> () {
-  const userStore = useSelector<IReducersModules>((reducersModules) => {
+  const userStore = useSelector<IReducersModules, IUserAccountState>((reducersModules) => {
     return reducersModules.user
   })
   const dispatch = useDispatch()

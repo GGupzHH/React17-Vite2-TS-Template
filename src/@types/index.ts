@@ -1,4 +1,4 @@
-// import { userAccountState } from '@/modules/UserAccount/store'
+// import { IuserAccountState } from '@/modules/UserAccount/store'
 
 interface IActionsType {
   [key: string]: string

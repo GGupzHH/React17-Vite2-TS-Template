@@ -3,6 +3,18 @@ import {
 } from '@/modules/UserAccount/api'
 
 import ACTIONS from './ACTIONS_TYPE'
+import { ITestDemoAction } from './ACTIONS_TYPE'
+
+// export type IActions = typeof actions
+
+export type ITestDemoState = typeof initialState
+
+type IActionsParams = Partial<ITestDemoState>
+
+type IReducersActionsParams = {
+  type: ITestDemoAction
+  data: ITestDemoState
+}
 
 const initialState = {
   demoInfo: {
@@ -19,26 +31,22 @@ const initialState = {
   }
 }
 
-export type ITestDemoState = typeof initialState
-
-type IActionsParams = Partial<ITestDemoState>
-
 export const actions = {
-  setUser (userInfo: IActionsParams) {   
+  setUser(data: IActionsParams) {
     console.log('setUser')
 
     return {
       type: ACTIONS.DEMO_INFO,
-      userInfo
+      data
     }
   }
 }
 
-export default function reducers (state = initialState, actions: any): ITestDemoState {
+export default function reducers (state = initialState, actions: IReducersActionsParams): ITestDemoState {
   switch (actions.type) {
     case ACTIONS.DEMO_INFO:
         console.log('LOGIN reduces')
-        actions.data.demoInfo.mysqlVersion = Math.random()
+        actions.data.demoInfo.mysqlVersion = '' + Math.random()
         console.log(state)
         console.log(actions.data)
         console.log(Object.assign({}, state, actions.data))
