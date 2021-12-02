@@ -1,11 +1,13 @@
-import Home from '@/modules/HomeDemo/pages/home.jsx'
-import Home1 from '@/modules/HomeDemo/pages/home1.jsx'
-import Demo from '@/modules/TestDemo/pages/test.jsx'
-import TestDemo1 from '@/modules/TestDemo/pages/test1.jsx'
+import Home from '@/modules/HomeDemo/pages/home'
+import Home1 from '@/modules/HomeDemo/pages/home1'
+import Demo from '@/modules/TestDemo/pages/test'
+import TestDemo1 from '@/modules/TestDemo/pages/test1'
 import DemoParams from '@/modules/TestDemo/pages/test-params'
 import Login from '@/modules/UserAccount/pages/login'
 
-const routerMap = [
+import { IRouterMap } from '@/router/types'
+
+const routerMap: IRouterMap = [
   {
     path: '/test',
     name: 'test',

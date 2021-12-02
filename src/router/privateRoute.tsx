@@ -8,16 +8,18 @@ import App from '@/App'
 
 import NotFound from '@/components/404'
 
-import routerMap from '@/router/routerMap.js'
+import routerMap from '@/router/routerMap'
 
 import Login from '@/modules/UserAccount/pages/login'
+
+import { IRouterMap } from '@/router/types'
 
 const RouteNotFound = () => {
   console.log('🍉🍉🍉🍉🍉🍉🍉')
   return <Redirect to={Object.assign({}, location, { state: { notFoundError: true } }) }></Redirect>
 }
 
-const recursiveRouters = routeList => (
+const recursiveRouters = (routeList: IRouterMap | undefined) => (
   Array.isArray(routeList) &&
   routeList.map((routeItem, index) => (
     <Route path={routeItem.path} key={index} exact={routeItem.exact} render={
@@ -42,14 +44,9 @@ const recursiveRouters = routeList => (
 )
 
 
-const PrivateRoute = function ({
-  component: Component,
-  childrenRouters,
-  ...rest
-}) {
-
+const PrivateRoute: React.FC = function () {
   return (
-    <Route render={(props) => {
+    <Route render={(props: any) => {
           console.log(props)
           const notFoundError = props.location.state?.notFoundError
           // const token = false
