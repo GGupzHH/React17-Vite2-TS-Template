@@ -3,7 +3,7 @@ import React from 'react'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { useLocation, useRouteMatch, Redirect } from 'react-router-dom'
-import { setHomeInfo } from '@/store/actions'
+import { actions } from '@/modules/HomeDemo/store'
 
 import IconFont from '@/components/IconFont'
 
@@ -11,23 +11,25 @@ import { Layout } from 'antd'
 
 const { Header, Footer, Content } = Layout
 
-function TestDemo (props) {
+import { IReducersModules } from '@/store/reducers'
+
+function TestDemo () {
+  
   const location = useLocation()
   const match = useRouteMatch()
   const dispatch = useDispatch()
-  const home = useSelector(({ home }) => {
+  const homeState = useSelector<IReducersModules>(({ home }) => {
     return home
   })
   console.log(match)
-  console.log(props)
   if (location.pathname === match.path) {
     return (
       <Redirect to='/test/a'/>
     )
   }
 
-  const handleClick = async (event) => {
-    const res = await dispatch(setHomeInfo('123'))
+  const handleClick = async (event: any) => {
+    const res = await dispatch(actions.setHomeInfo({}))
     console.log(res)
   }
 
@@ -48,7 +50,7 @@ function TestDemo (props) {
       </Layout>
       header 嵌套路由-父路由
       <p onClick={handleClick}>
-        dispatch 异步 home-type{ home.homeInfo.type }
+        dispatch 异步 home-type{ homeState.homeInfo.type }
       </p>
       { props.children }
       footer

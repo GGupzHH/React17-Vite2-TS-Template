@@ -6,6 +6,6 @@ const ACTIONS_TYPE = {
   DEMO_INFO: 'demoInfo'
 }
 
-// export type IAction = typeof ACTIONS_TYPE
+export type ITestDemoAction = keyof typeof ACTIONS_TYPE
 
 export default createActionsType(moduleName, ACTIONS_TYPE)

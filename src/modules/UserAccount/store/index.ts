@@ -3,9 +3,18 @@ import {
 } from '@/modules/UserAccount/api'
 
 import ACTIONS from './ACTIONS_TYPE'
+import { IUserAccountAction } from './ACTIONS_TYPE'
 
-import { Dispatch, AnyAction } from 'redux'
+import { Dispatch } from 'redux'
 
+export type IUserAccountState = typeof initialState
+
+type IActionsParams = Partial<IUserAccountState>
+
+type IReducersActionsParams = {
+  type: IUserAccountAction
+  data: IUserAccountState
+}
 
 const initialState = {
   userInfo: {
@@ -13,15 +22,11 @@ const initialState = {
   }
 }
 
-export type IUserAccountState = typeof initialState
-
-type IActionsParams = Partial<IUserAccountState>
-
 export const actions = {
-  setUserInfo (info: IActionsParams) {
+  setUserInfo (data: IActionsParams) {
     return {
       type: ACTIONS.USERINFO,
-      info
+      data
     }
   },
   asyncSetUserInfo (homeInfo: IActionsParams) {
@@ -46,13 +51,10 @@ export const actions = {
   }
 }
 
-export default function reducers (state = initialState, actions: AnyAction): IUserAccountState {
+export default function reducers(state = initialState, actions: IReducersActionsParams): IUserAccountState {
   switch (actions.type) {
     case ACTIONS.USERINFO:
-      return {
-        ...state,
-        userInfo: actions.info
-      }
+      return Object.assign({}, state, actions.data)
     default:
       return state
   }

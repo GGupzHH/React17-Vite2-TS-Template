@@ -2,6 +2,16 @@ import { sleep } from '@/utils/request'
 import { Dispatch } from 'redux'
 
 import ACTIONS from './ACTIONS_TYPE'
+import { IHomeDemoAction } from './ACTIONS_TYPE'
+
+export type IHomeDemoState = typeof initialState
+
+type IActionsParams = Partial<IHomeDemoState>
+
+type IReducersActionsParams = {
+  type: IHomeDemoAction
+  data: IHomeDemoState
+}
 
 const initialState = {
   homeInfo: {
@@ -18,9 +28,7 @@ const initialState = {
   }
 }
 
-export type IHomeDemoState = typeof initialState
 
-type IActionsParams = Partial<IHomeDemoState>
 
 export const actions = {
   asyncSetHomeInfor (info: IActionsParams) {
@@ -45,16 +53,11 @@ export const actions = {
   }
 }
 
-export default function reducers (state = initialState, actions: any): IHomeDemoState {
+export default function reducers (state = initialState, actions: IReducersActionsParams): IHomeDemoState {
   switch (actions.type) {
     case ACTIONS.HOME_INFO:
       console.log('HOMEINFO reduces', ACTIONS.HOME_INFO)
-      return {
-        homeInfo: {
-          ...state.homeInfo,
-          type: actions.info
-        },
-      }
+      return Object.assign({}, state, actions.data)
     default:
       return state
   }
