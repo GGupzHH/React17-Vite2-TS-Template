@@ -89,7 +89,7 @@ const routerMap: IRouterMap = [
     name: 'Login',
     exact: true,
     meta: {
-      title: 'testparams'
+      title: 'login'
     },
     component: Login,
   }

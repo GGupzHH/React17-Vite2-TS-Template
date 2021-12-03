@@ -2,7 +2,7 @@
 import React from 'react'
 import { useLocation, useParams, useRouteMatch, Redirect } from 'react-router-dom'
 
-function Test (props) {
+function Test (props: any) {
   return (
       <div>
         test1/test footer
@@ -11,7 +11,7 @@ function Test (props) {
 }
 
 
-function TestDemo1 (props) {
+function TestDemo1 (props:any) {
   const match = useRouteMatch()
   const location = useLocation()
   const params = useParams()

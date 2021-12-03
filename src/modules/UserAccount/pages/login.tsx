@@ -23,14 +23,16 @@ import {
   useSelector,
 } from 'react-redux'
 
-import { IReducersModules } from '@/store/reducers'
+import { IRootState } from '@/store/reducers'
 import { IUserAccountState } from '@/modules/UserAccount/store'
 
-// import {  } from
+import { useAppState } from '@/store'
+
 function Login<React> () {
-  const userStore = useSelector<IReducersModules, IUserAccountState>((reducersModules) => {
+  const userStore = useAppState((reducersModules) => {
     return reducersModules.user
   })
+
   const dispatch = useDispatch()
 
   const onFinish = async (values: any) => {

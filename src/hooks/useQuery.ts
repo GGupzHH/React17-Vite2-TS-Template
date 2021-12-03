@@ -1,12 +1,10 @@
 import { useLocation } from 'react-router-dom'
 
-export function useQuery() {
-  const { search } = useLocation()
+export function useQuery<T>() {
+  const { search } = useLocation<T>()
   const queryIterator = new URLSearchParams(search)
 
-  const obj = {}
-
-  const keys = queryIterator.keys()
+  const obj: any = {}
 
   for (const key of queryIterator.keys()) {
     const values = queryIterator.getAll(key)
@@ -19,4 +17,3 @@ export function useQuery() {
 
   return obj
 }
-

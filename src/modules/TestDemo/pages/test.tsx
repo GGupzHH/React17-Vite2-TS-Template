@@ -13,12 +13,14 @@ const { Header, Footer, Content } = Layout
 
 import { IReducersModules } from '@/store/reducers'
 
+import { useAppState } from '@/store'
+
 function TestDemo () {
   
   const location = useLocation()
   const match = useRouteMatch()
   const dispatch = useDispatch()
-  const homeState = useSelector<IReducersModules>(({ home }) => {
+  const homeState = useAppState(({ home }) => {
     return home
   })
   console.log(match)
@@ -52,7 +54,7 @@ function TestDemo () {
       <p onClick={handleClick}>
         dispatch 异步 home-type{ homeState.homeInfo.type }
       </p>
-      { props.children }
+      {/* { props.children } */}
       footer
     </div>
   )
