@@ -3,10 +3,10 @@ import { useLocation, useParams } from 'react-router-dom'
 import { useQuery } from '@/hooks'
 function TestParams () {
   const l = useLocation()
-  const p = useParams()
+  const p: any = useParams()
   console.log(l)
   console.log(p)
-  const query = useQuery('?name=zs&age=12')
+  const query = useQuery<string>()
   console.log(query)
   return (
     <div>

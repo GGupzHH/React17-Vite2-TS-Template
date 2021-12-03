@@ -4,6 +4,7 @@ import { useLocation, useHistory } from 'react-router-dom'
 
 import { Button } from 'antd'
 
+import { useAppState } from '@/store'
 
 
 function Test () {
@@ -17,16 +18,16 @@ function Test () {
 
 
 
-function Home (props) {
+function Home (props: any) {
   const l = useLocation()
   const h = useHistory()
-  const demo = useSelector(({ demo }) => {
+  const demo = useAppState(({ demo }) => {
     return demo
   })
 
   const dispatch = useDispatch()
 
-  const handleClick = (event) => {
+  const handleClick = (event: any) => {
 
     dispatch({
       type: 'LOGIN',
