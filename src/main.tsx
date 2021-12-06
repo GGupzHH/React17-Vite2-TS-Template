@@ -7,7 +7,7 @@ import '@/styles/index.scss'
 
 import { Provider } from 'react-redux'
 
-import { ConfigProvider, DatePicker, message } from 'antd'
+import { ConfigProvider } from 'antd'
 import zhCN from 'antd/lib/locale/zh_CN'
 import 'antd/dist/antd.css'
 import store from './store'

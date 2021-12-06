@@ -7,10 +7,6 @@ import '@/modules/UserAccount/style/login.scss'
 import Logo from '@/assets/logo.svg'
 import ViteLogo from '@/assets/favicon.svg'
 
-// import { ValidateErrorEntity } from 'rc-fidle-form'
-
-// import { FormProps } from 'rc-pagination'
-
 import {
   SmileTwoTone,
   LockOutlined
