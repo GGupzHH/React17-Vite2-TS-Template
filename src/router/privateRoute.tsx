@@ -10,8 +10,6 @@ import NotFound from '@/components/404'
 
 import routerMap from '@/router/routerMap'
 
-import Login from '@/modules/UserAccount/pages/login'
-
 import { IRouterMap } from '@/router/types'
 
 const RouteNotFound = () => {
@@ -49,10 +47,7 @@ const PrivateRoute: React.FC = function () {
     <Route render={(props: any) => {
           console.log(props)
           const notFoundError = props.location.state?.notFoundError
-          // const token = false
           return (
-            // token
-            // ?
             <App>
               {
                 notFoundError ?
@@ -67,7 +62,6 @@ const PrivateRoute: React.FC = function () {
                 </Switch>
               }
             </App>
-            // : <Login/>
           )
         }
       }>
