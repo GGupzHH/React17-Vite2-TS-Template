@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './index.scss'
 
-function IconFont (props) {
+function IconFont (props: any) {
   console.log(props)
 
   const handleClick = () => {

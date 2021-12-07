@@ -2,12 +2,11 @@ import axios, { Axios, AxiosInstance, AxiosRequestConfig } from 'axios'
 import Cookie from 'js-cookie'
 
 import { camelizeKeys, decamelizeKeys } from './camelCase'
-import Router from '../router/index'
-import { IRequestData } from '@/@types'
+// import Router from '../router/index'
 
 // redirect error
-function errorRedirect (url: string) {
-  Router.push(`/${url}`)
+function errorRedirect(url: string) {
+  window.location.href = `/${url}`
 }
 // code Message
 const codeMessage: { [key: number]: string} = {
